@@ -75,7 +75,7 @@ public class CoupleGameFragment extends Fragment implements GoBangBoard.PutChess
                 mIsWhiteFirst = !mIsWhiteFirst;
                 mCurrentWhite = mIsWhiteFirst;
                 String buttonText;
-                if (mCurrentWhite){
+                if (mCurrentWhite) {
                     buttonText = "白子先手";
                 } else {
                     buttonText = "黑子先手";
