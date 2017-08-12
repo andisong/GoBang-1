@@ -23,7 +23,7 @@ public class GoBangBoard extends View {
 
     private static final int LINE_COUNT = 15;
     private static final int BOARD_MARGIN = 40;
-    private static final int HALF_CHESS_SIZE = 35;
+    private static int HALF_CHESS_SIZE = 35;
 
     private static final int BOARD_SIZE = LINE_COUNT;
     private static final float BOARD_LINE_WIDTH_DP = 0.7f;//棋盘线宽度
@@ -107,6 +107,9 @@ public class GoBangBoard extends View {
         float boardHeight = getMeasuredHeight() - BOARD_MARGIN * 2;
 
         mGridWidth = boardWidth / (mLineCount - 1);
+
+        HALF_CHESS_SIZE = (int) (0.9 * mGridWidth) / 2; // Reset chess size
+
         for (int i = 0; i < mLineCount * 4; i += 4) {
             mVerticalLinePoints[i] = i * mGridWidth / 4 + BOARD_MARGIN;
             mVerticalLinePoints[i + 1] = BOARD_MARGIN;
@@ -162,7 +165,7 @@ public class GoBangBoard extends View {
 
     public void moveBack(Point currentPoint) {
         mBoard[mLastPutX][mLastPutY] = Constants.CHESS_NONE;
-        if (currentPoint != null){
+        if (currentPoint != null) {
             mLastPutX = currentPoint.x;
             mLastPutY = currentPoint.y;
             mShouldDrawRedFlag = true;
